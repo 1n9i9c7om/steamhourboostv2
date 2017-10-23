@@ -1,3 +1,16 @@
+### What will change in this fork?
+
+*Note: nothing stated here is actually done yet. As time of writing, I haven't even started working on it yet. Uff.*
+
+A webinterface will be added that allows you to start/stop accounts on a per account basis. That means that you can disable this bot for account X while still boosting account Y.  
+When this is done, support for multiple users will be added. Accounts will be owned by users, so that user X can enable/disable it's accounts, but user Y can't. *However*, this will be a n:m relation, meaning that multiple users can have access to the same account (while still having multiple accounts). This is to make sure you don't block your friends out of your account in case you share it.
+
+To accomplish this, the database might be changed to MySQL. I'm not that experienced with Node and that would allow me to use PHP while only making minor changes to the Node scripts. :\^)
+
+Everything below this line is the default Readme of [steamhourboostv2](https://github.com/frk1/steamhourboostv2) created by [frk1](https://github.com/frk1/).
+
+---
+
 ## steamhourboost v2
 
 This new version natively supports two-factor authentication using the shared secret of your app.
@@ -5,13 +18,6 @@ This new version natively supports two-factor authentication using the shared se
 To add new users to the `database.json` run `coffee user.coffee` and follow the instructions.
 
 By default it will boost the games CS 1.6 and CS:GO. If you want to change the games that are being boosted, edit the `database.json` directly!
-
-### What will change in this fork?
-
-*Note: nothing stated here is actually done yet. As time of writing, I haven't even started working on it yet. Uff.*
-
-A webinterface will be added that allows you to start/stop accounts on a per account basis. That means that you can disable this bot for account X while still boosting account Y.  
-When this is done, support for multiple users will be added. Accounts will be owned by users, so that user X can enable/disable it's accounts, but user Y can't. *However*, this will be a n:m relation, meaning that multiple users can have access to the same account (while still having multiple accounts). This is to make sure you don't block your friends out of your account in case you share it.
 
 ### How to install
 First you need to install a recent version of `node.js`, `coffee-script` and `pm2`:
