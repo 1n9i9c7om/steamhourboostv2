@@ -15,7 +15,7 @@ module.exports = class SteamAccount extends EventEmitter
     @client.on 'error', (err) => @emit 'clientError', err
     @client.on 'steamGuard', => @emit 'clientSteamGuard'
     @client.once 'steamGuard', => @steamGuardRequested = true
-    console.log "SteamAccount constructor"
+    #console.log "SteamAccount constructor"
 
   logheader: =>
     S "[#{moment().format('YYYY-MM-DD HH:mm:ss')} - #{@name}]"
@@ -62,4 +62,5 @@ module.exports = class SteamAccount extends EventEmitter
 
   restartGames: =>
     @client.gamesPlayed []
+    console.log "#{@logheader()} Restarting!"
     Promise.delay('5000').then @boost

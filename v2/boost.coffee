@@ -42,7 +42,7 @@ if (err) throw err;
 accGames = [];
 result.forEach(function (row)
 {
-console.log("Iterating through Steam Account " + row.username);
+//console.log("Iterating through Steam Account " + row.username);
 account = [{'username': row.username,'password': row.password,'sentry': row.sentry,'secret': row.secret,'games': accGames}];
 accounts.set(row.username, account);
 activeMap.set(row.username, row.IsActive);
@@ -53,7 +53,7 @@ pushAccountsToMap()
 
 function pushAccountsToMap()
 {
-console.log("push to map");
+//console.log("push to map");
 accounts.forEach(function (value, key)
 {
 if(!steamAccounts.has(key))
@@ -66,18 +66,26 @@ steamAccounts.set(value[0].username, new SteamAccount value[0].username, value[0
 compareActiveMaps();
 }
 
-function compareActiveMaps()
+function compareActiveMaps(reset)
 {
 activeMap.forEach(function (value, key)
 {
-if(prevActiveMap.get(key) != activeMap.get(key))
+if(prevActiveMap.get(key) != activeMap.get(key) || reset)
 {
 if(activeMap.get(key) == 1)
 {
+if(reset)
+{
 `
-console.log "boosting account " + steamAccounts.get(key).name
+steamAccounts.get(key).restartGames()
+`
+}
+else
+{
+`
 steamAccounts.get(key).boost()
 `
+}
 }
 else
 {
@@ -93,7 +101,14 @@ steamAccounts.get(key).logoff()
 });
 }
 
-setInterval(reloadAccountsArray, 5000);`
+function callReset()
+{
+console.log("Calling Reset");
+compareActiveMaps(true);
+}
+
+setInterval(reloadAccountsArray, 5000);
+setInterval(callReset, 1800000);`
 
 
 restartBoost = ->
